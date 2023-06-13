@@ -1,1 +1,48 @@
 <h1 class="text-xl text-bold mb-4">True to Form: A Guide to Reactive Forms</h1>
+
+<form [formGroup]="form">
+  <input
+    class="border-1 border"
+    placeholder="First Name"
+    type="text"
+    formControlName="firstName"
+  />
+  <p *ngIf="firstNameErrors?.required" class="text-red-500">
+    This feild is required
+  </p>
+
+  <input
+    class="border-1 border"
+    placeholder="Last Name"
+    type="text"
+    formControlName="lastName"
+  />
+
+  <input
+    class="border-1 border"
+    placeholder="email"
+    type="text"
+    formControlName="email"
+  />
+  <!--<label for="subscription">
+    <input
+      class="border-1 border"
+      type="checkbox"
+      formControlName="subscribe"
+    />
+    Subscribe?
+  </label>-->
+
+  <!--disabled:opacity-10 clever -->
+  <button
+    [disabled]="!form.valid"
+    class="bg-green-500 rounnded p-4 text-white disabled:opacity-10"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+</form>
+
+<pre><code>
+  {{formUpdate$ | async | json}}
+</code></pre>
